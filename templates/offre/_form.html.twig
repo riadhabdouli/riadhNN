@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<label>
+    District
+</label>
+    <select name="district">
+        {% for district in districts %}
+        <option value="{{ district.idDistrict }}">{{ district.nomDistrict }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

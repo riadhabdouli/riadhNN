@@ -1,0 +1,35 @@
+{% extends 'backend.html.twig' %}
+
+{% block title %}Quiz index{% endblock %}
+
+{% block body %}
+    <h1>Quiz index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quizid</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.quizid }}</td>
+                <td>{{ quiz.title }}</td>
+                <td>
+                    <a href="{{ path('quiz_show', {'quizid': quiz.quizid}) }}">show</a>
+                    <a href="{{ path('quiz_edit', {'quizid': quiz.quizid}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('quiz_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz disponible{% endblock %}
+
+{% block body %}
+    <div class="section margin-top-65 margin-bottom-65">
+        <div class="container">
+
+
+            <div class="row">
+
+                <!-- Section Headline -->
+                <div class="col-xl-12">
+                    <div class="section-headline centered margin-top-0 margin-bottom-45">
+                        <h3>Liste des quiz</h3>
+                    </div>
+                </div>
+            {% for c in quizzes%}
+            <div class="col-xl-3 col-md-6">
+                    <!-- Photo Box -->
+                    <a href="{{ path ('getQuiz', {'idquiz': c.quizid}) }}" class="photo-box" data-background-image="{{ asset('images/quiz.jpg')}}">
+                        <div class="photo-box-content">
+                            <h3>{{ c.title }}</h3>
+                            <span>Tentez vote chance</span>
+                        </div>
+                    </a>
+                </div>
+        {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Features Cities / End -->
+{% endblock %}
+
+            

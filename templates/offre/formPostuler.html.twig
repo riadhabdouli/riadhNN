@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<form method="post" action="{{ path('offre_pdf') }}">
+    <label>Votre nom</label><input type="text" name="nom">
+    <label>Votre prenom</label><input type="text" name="prenom">
+    <label>Votre âge</label><input type="text" name="age">
+    <label>Votre email</label><input type="text" name="email">
+    <label>Votre diplôme</label><input type="text" name="diplome">
+    <button>Sortir ma lettre</button>
+</form>
+{% endblock %}

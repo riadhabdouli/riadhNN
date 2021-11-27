@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+   <div class="numbers">
+       <div class="bloc" id="hours"></div>
+       <div class="bloc" id="minutes"></div>
+       <div class="bloc last" id="secondes"></div>
+
+   </div>
+    <center><h1>Quizz</h1></center>
+    <form method="post" action="{{ path("traitementQuiz", {'idquiz':idquiz}) }}">
+    <p class="text-center">
+        <center><label> Bienvenue au quizz de passage d'entretien </label></center>
+
+          {% for c in questions %}
+                       <h2> {{ c.question }}</h2>
+          <div>
+
+                    <input id="reponses" type="radio" value="{{ c.option1 }}" name="{{ c.questionId }}" > <label>{{  c.option1}}</label>
+                    <input id="reponses" type="radio" value="{{ c.option2 }}" name="{{ c.questionId }}" > <label>{{  c.option2}}</label>
+                    <input id="reponses" type="radio" value="{{ c.option3 }}" name="{{ c.questionId }}" > <label>{{  c.option3}}</label>
+                    <input id="reponses" type="radio" value="{{ c.option4 }}" name="{{ c.questionId }}" > <label>{{  c.option4}}</label>
+                
+
+         {% endfor %}
+
+        </div>
+
+    </p>
+        <center><button type="submit" class="btn btn-lg btn-primary"> Valider </button></center>
+    </form>
+ {% block js %}
+
+
+     <script type="text/javascript">
+        
+</script>
+
+   {% endblock %}
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien index{% endblock %}
+
+{% block body %}
+    <h1>Entretien index</h1>
+
+    <table class="table table-hover" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UserId</th>
+                <th>QuizzId</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Type</th>
+                <th>BeginAt</th>
+                <th>EndAt</th>
+                <th>Title</th>
+                <th>EntrepriseId</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entretien in entretiens %}
+            <tr>
+                <td>{{ entretien.id }}</td>
+                <td>{{ entretien.userId }}</td>
+                <td>{{ entretien.quizzId }}</td>
+                <td>{{ entretien.date ? entretien.date|date('Y-m-d') : '' }}</td>
+                <td>{{ entretien.heure ? entretien.heure|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ entretien.type }}</td>
+                <td>{{ entretien.beginAt ? entretien.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ entretien.endAt ? entretien.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ entretien.title }}</td>
+                <td>{{ entretien.entrepriseId }}</td>
+                <td>
+                    <a href="{{ path('entretien_show', {'id': entretien.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+{% block body %}
+<div class="single-page-header" data-background-image="{{ asset('images/single-job.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="single-page-header-inner">
+                    <div class="left-side">
+                        <div class="header-image"><a href="single-company-profile.html"><img src="{{ asset('images/Offre-speciale1.png') }}" alt=""></a></div>
+                        <div class="header-details">
+                            <h3>{{ offre.nomoffre }}</h3>
+                            <h5>Officium</h5>
+                            <ul>
+                                <li><a href="single-company-profile.html"><i class="icon-material-outline-business"></i> {{ district.nomDistrict }}</a></li>
+                                <li><div class="star-rating" data-rating="4.9"></div></li>
+                                <li><img class="flag" src="{{ asset('images/flags/world.jpg') }}" alt=""> {{ district.region }}</li>
+                                {% if offre.disponibilite > 0 %}
+                                    <li><div class="verified-badge-with-title">Il y'a de la place pour toi</div></li>
+                                {% else %}
+                                    <li><div class="not-verified-badge">Désolé il n'y'a plus de place</div></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="salary-box">
+                            <div class="salary-type">Choisi ton</div>
+                            <div class="salary-amount">Futur</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+
+        <!-- Content -->
+        <div class="col-xl-8 col-lg-8 content-right-offset">
+
+            <div class="single-page-section">
+                <h3 class="margin-bottom-25">Description de l'offre</h3>
+                <p>{{ offre.description }} </p>
+            </div>
+
+            <div class="single-page-section">
+            </div>
+        </div>
+
+
+        <!-- Sidebar -->
+        <div class="col-xl-4 col-lg-4">
+            <div class="sidebar-container">
+                {% if offre.disponibilite > 0 %}
+                <a href="{{ path('offre_postuler', {'numoffre': offre.numoffre}) }}" class="apply-now-button">Postuler maintenant <i class="icon-material-outline-arrow-right-alt"></i></a>
+                {% else %}
+                    <a href="#" class="apply-now-button">Désolé il n'y'a plus de place <i class="icon-material-outline-lock"></i></a>
+                {% endif %}
+                <!-- Sidebar Widget -->
+                <div class="sidebar-widget">
+                    <div class="job-overview">
+                        <div class="job-overview-headline">Détail de l'offre</div>
+                        <div class="job-overview-inner">
+                            <ul>
+                                <li>
+                                    <i class="icon-material-outline-location-on"></i>
+                                    <span>Location</span>
+                                    <h5>{{ district.nomDistrict }}, {{district.region }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-business-center"></i>
+                                    <span>Disponibilite</span>
+                                    <h5>{{ offre.disponibilite }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-face"></i>
+                                    <span>Sexe</span>
+                                    <h5>{{ offre.sexe }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-access-time"></i>
+                                    <span>Date Posted</span>
+                                    <h5>{{ offre.dateCreation ? offre.dateCreation|date('Y-m-d') : '' }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-access-alarm"></i>
+                                    <span>Date Posted</span>
+                                    <h5>{{ offre.dateExpiration ? offre.dateExpiration|date('Y-m-d') : '' }}</h5>
+                                </li>
+
+                                <li>
+                                    <i class="icon-material-outline-face"></i>
+                                    <span>Expérience</span>
+                                    <h5>{{ offre.experience }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-school"></i>
+                                    <span>Niveau d'étude requis</span>
+                                    <h5>{{ offre.niveauEtude }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-person-pin"></i>
+                                    <span>Âge minimum requis</span>
+                                    <h5>{{ offre.agemin }}</h5>
+                                </li>
+                                <li>
+                                    <i class="icon-material-outline-person-pin"></i>
+                                    <span>Âge maximum requis</span>
+                                    <h5>{{ offre.agemax }}</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'backend.html.twig' %}
+
+{% block title %}Resultat index{% endblock %}
+
+{% block body %}
+    <h1>Resultat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quizid</th>
+                <th>Note</th>
+                <th>Userid</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultat in resultats %}
+            <tr>
+                <td>{{ resultat.id }}</td>
+                <td>{{ resultat.quizid }}</td>
+                <td>{{ resultat.note }}</td>
+                <td>{{ resultat.userid }}</td>
+                <td>
+                    <a href="{{ path('entretien_add', {'id': resultat.quizid,'type': 'accepter','note': resultat.note}) }}"><button class="btn btn-success">Accepter</button></a>
+                    <a href="{{ path('resultat_refus', {'id': resultat.quizid,'idresultat':resultat.id ,'type': 'refuser','note': resultat.note}) }}"><button class="btn btn-danger">Rejeter</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('resultat_new') }}">Create new</a>
+{% endblock %}
